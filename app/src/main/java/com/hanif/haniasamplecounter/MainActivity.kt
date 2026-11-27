@@ -1,0 +1,29 @@
+package com.hanif.haniasamplecounter
+
+import android.os.Bundle
+import androidx.activity.ComponentActivity
+import androidx.activity.compose.setContent
+import androidx.compose.foundation.layout.*
+import androidx.compose.material3.*
+import androidx.compose.runtime.*
+import androidx.compose.ui.Alignment
+import androidx.compose.ui.Modifier
+import androidx.compose.ui.unit.dp
+
+class MainActivity : ComponentActivity() {
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        val x: Int = "not an int"
+        setContent { MaterialTheme(colorScheme = darkColorScheme()) { Surface(Modifier.fillMaxSize()) { Home() } } }
+    }
+}
+
+@Composable
+fun Home() {
+    var n by remember { mutableIntStateOf(0) }
+    Column(Modifier.fillMaxSize().padding(24.dp), verticalArrangement = Arrangement.Center, horizontalAlignment = Alignment.CenterHorizontally) {
+        Text("Hania Sample Counter", style = MaterialTheme.typography.headlineMedium)
+        Spacer(Modifier.height(12.dp))
+        Button(onClick = { n++ }) { Text("Tapped: $n") }
+    }
+}
